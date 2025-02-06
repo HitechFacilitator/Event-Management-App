@@ -21,3 +21,6 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+app/Http/Controllers/UserController.php
+routes/users.php

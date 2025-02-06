@@ -50,11 +50,14 @@ php artisan key:generate
 
 php artisan migrate
 
-6️⃣ Seed the Database (Optional)
+6️⃣ Seed the Database (Optional) run:
 
 php artisan db:seed
+or run:
+php artisan migrate:fresh --seed
 
 This will populate the database with some test data.
+
 7️⃣ Run the Laravel Development Server
 
 php artisan serve

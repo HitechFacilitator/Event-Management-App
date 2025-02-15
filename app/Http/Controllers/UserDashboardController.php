@@ -14,6 +14,6 @@ class UserDashboardController extends Controller
 
     public function generatePublicEvent()
     {
-
+        //
     }
 }

@@ -36,7 +36,7 @@
                 </p>
             </div>
 
-            <div class='flex w-[220px] flex-row gap-x-[4px]'>
+            <div class='flex w-[220px] flex-row gap-x-[3px]'>
 
                 <div class="flex flex-row gap-x-[4px] w-[158px] {{--border-solid border-2 border-black--}}">
                     <div class="flex justify-center">

@@ -16,8 +16,9 @@
 
     @php
         $eventTitle = "Black History Month Janr";
-        $eventOrganiser = "megan laeti";
+        $eventOrganiser = "megan laeticia";
         $numAttends = "13.4K";
+        #megan laetici ...
     @endphp
     {{-- {{ dd($eventTitle, $eventOrganiser, $numAttends) }} --}}
 

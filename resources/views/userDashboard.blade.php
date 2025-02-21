@@ -15,6 +15,32 @@
 <body>
 
     @php
+        use App\Http\Controllers\UserDashboardController;
+
+        $eventCardRecords = UserDashboardController::generatePublicEventCards();
+
+        // $eventCards = array_map(function ($eventCardRecord) {
+
+        //     // return "<x-eventCard :eventTitle=\"eventCardRecord['eventTitle']\" :eventOrganiser=\"$eventCardRecord['eventOrganiser']\" :numAttends=\"$eventCardRecord['attendee_count']\" />";
+
+        //     return "<x-eventCard :eventTitle=\"" . $eventCardRecord['eventTitle'] . "\" :eventOrganiser=\"" . $eventCardRecord['eventOrganizer'] . "\" :numAttends=\"" . $eventCardRecord['attendee_count'] . "\" />";
+
+        // }, $eventCardRecords);
+
+        // Generate the Blade component strings for each event
+        $eventCards = array_map(function ($eventCardRecord) {
+            return view('components.eventCard', [
+                'eventTitle' => $eventCardRecord['eventTitle'],
+                'eventOrganiser' => $eventCardRecord['eventOrganizer'],
+                'numAttends' => $eventCardRecord['attendee_count'],
+            ])->render();
+        }, $eventCardRecords);
+
+
+
+        // Combine all event cards into one string
+        $eventCardsHtml = implode('', $eventCards);
+
         $eventTitle = "Black History Month Janr";
         $eventOrganiser = "megan laeticia";
         $numAttends = "13.4K";
@@ -32,6 +58,13 @@
         <!-- Main Content -->
         <div class="flex-1 ml-[300px] pt-[92px] pr-[50px] pb-[30px]">
             <div class="{{--border-solid border-2 border-black--}} grid grid-cols-4 gap-x-[10px] gap-y-[20px] ">
+
+
+
+                {!! $eventCardsHtml !!} <!-- Render all event cards at once -->
+
+                {{-- <x-eventCard :eventTitle="$eventTitle" :eventOrganiser="$eventOrganiser"
+                    :numAttends="$numAttends" />
                 <x-eventCard :eventTitle="$eventTitle" :eventOrganiser="$eventOrganiser" :numAttends="$numAttends" />
                 <x-eventCard :eventTitle="$eventTitle" :eventOrganiser="$eventOrganiser" :numAttends="$numAttends" />
                 <x-eventCard :eventTitle="$eventTitle" :eventOrganiser="$eventOrganiser" :numAttends="$numAttends" />
@@ -39,7 +72,7 @@
                 <x-eventCard :eventTitle="$eventTitle" :eventOrganiser="$eventOrganiser" :numAttends="$numAttends" />
                 <x-eventCard :eventTitle="$eventTitle" :eventOrganiser="$eventOrganiser" :numAttends="$numAttends" />
                 <x-eventCard :eventTitle="$eventTitle" :eventOrganiser="$eventOrganiser" :numAttends="$numAttends" />
-                <x-eventCard :eventTitle="$eventTitle" :eventOrganiser="$eventOrganiser" :numAttends="$numAttends" />
+                --}}
             </div>
         </div>
 
